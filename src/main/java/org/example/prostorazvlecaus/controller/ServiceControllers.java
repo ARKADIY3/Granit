@@ -1,7 +1,6 @@
 package org.example.prostorazvlecaus.controller;
 
 import org.example.prostorazvlecaus.model.Service;
-import org.example.prostorazvlecaus.model.ServiceType;
 import org.example.prostorazvlecaus.service.ServiceService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -29,9 +28,8 @@ public class ServiceControllers {
     }
 
     @GetMapping("/newService")
-    public String newService(Model model , Service service , ServiceType serviceType) {
+    public String newService(Model model , Service service) {
         model.addAttribute("service", new Service());
-        model.addAttribute("serviceTypes", ServiceType.values());
         return "service/newService";
     }
 
@@ -51,7 +49,6 @@ public class ServiceControllers {
     public String createService(@PathVariable Long id, Model model) {
         Service service = serviceService.getServiceById(id);
         model.addAttribute("service", service);
-        model.addAttribute("serviceTypes", ServiceType.values());
         return "service/createService";
     }
 

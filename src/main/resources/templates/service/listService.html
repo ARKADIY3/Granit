@@ -19,7 +19,7 @@
     </tr>
     <tr th:each="service : ${services}">
         <td th:text="${service.id}"></td>
-        <td th:text="${service.serviceTypeDisplayName}"></td>
+        <td th:text="${service.name}"></td>
         <td>
             <a th:href="@{/service/delete/{id}(id=${service.id})}">Удалить</a>
             <a th:href="@{/service/create/{id}(id=${service.id})}">Редактировать</a>

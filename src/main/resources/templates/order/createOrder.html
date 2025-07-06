@@ -17,7 +17,7 @@
     <div>
         <label>Камень</label>
         <select th:field="*{stone}" required>
-            <option value="">-- Выберите услугу --</option>
+            <option value="">-- Выберите камень --</option>
             <option th:each="stone : ${allStones}"
                     th:value="${stone.id}"
                     th:text="${stone.name}"
@@ -27,6 +27,7 @@
     <div>
         <label>Услуга</label>
         <select th:field="*{service}" required>
+            <option value="">-- Выберите услугу --</option>
             <option th:each="service : ${allServices}"
                     th:value="${service.id}"
                     th:text="${service.name}"

@@ -13,13 +13,7 @@
 <form th:action="@{/service/saveService}" th:object="${service}" method="post">
     <div>
         <label>Название услуги</label>
-        <select th:field="*{serviceType}" required>
-            <option value="">-- Выберите тип услуги --</option>
-            <option th:each="type : ${serviceTypes}"
-                    th:value="${type}"
-                    th:text="${type.displayName}">
-            </option>
-        </select>
+        <input type="text" th:field="*{name}" required>
     </div>
     <a th:href="@{listService}">Назад</a>
     <button type="submit">Сохранить</button>
