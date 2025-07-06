@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить камень</title>
+    <link rel="stylesheet" th:href="@{/style.css}" href="/style.css" />
+</head>
+<body>
+<header th:replace="~{header :: header}"></header>
+
+    <h1>Добавить камень</h1>
+    <form th:action="@{/stone/save}" th:object="${stone}" method="post">
+        <div>
+            <label>Название камня</label>
+            <select th:field="*{name}" required>
+                <optgroup label="Мрамор и мраморовидные породы">
+                    <option th:value="'Белый мрамор (Каррара, Статуарио)'">Белый мрамор (Каррара, Статуарио)</option>
+                    <option th:value="'Цветной мрамор (Крема Марфил, Боттичино, Эмпердор Дарк)'">Цветной мрамор (Крема Марфил, Боттичино, Эмпердор Дарк)</option>
+                    <option th:value="'Оникс (полупрозрачный слоистый камень)'">Оникс (полупрозрачный слоистый камень)</option>
+                    <option th:value="'Травертин (пористый известняк)'">Травертин (пористый известняк)</option>
+                </optgroup>
+                <optgroup label="Гранит">
+                    <option th:value="'Абсолют Блэк (черный)'">Абсолют Блэк (черный)</option>
+                    <option th:value="'Бьянко Антарктика (белый)'">Бьянко Антарктика (белый)</option>
+                    <option th:value="'Габбро (темно-зеленый)'">Габбро (темно-зеленый)</option>
+                    <option th:value="'Балморал Ред (красный)'">Балморал Ред (красный)</option>
+                </optgroup>
+                <optgroup label="Кварциты и кварцевые агломераты">
+                    <option th:value="'Белый кварцит'">Белый кварцит</option>
+                    <option th:value="'Таицкий кварцит (розовый)'">Таицкий кварцит (розовый)</option>
+                    <option th:value="'Искусственный кварцевый камень (бренды типа Silestone, Caesarstone)'">Искусственный кварцевый камень (бренды типа Silestone, Caesarstone)</option>
+                </optgroup>
+                <optgroup label="Известняки">
+                    <option th:value="'Иерусалимский камень'">Иерусалимский камень</option>
+                    <option th:value="'Французский известняк'">Французский известняк</option>
+                </optgroup>
+                <optgroup label="Сланцы">
+                    <option th:value="'Зеленый сланец'">Зеленый сланец</option>
+                    <option th:value="'Фиолетовый сланец'">Фиолетовый сланец</option>
+                </optgroup>
+                <optgroup label="Песчаники">
+                    <option th:value="'Радж Грин (Индия)'">Радж Грин (Индия)</option>
+                    <option th:value="'Кантри Браун'">Кантри Браун</option>
+                </optgroup>
+            </select>
+        </div>
+        <div>
+            <label>Твёрдость по Моосу</label>
+            <input type="number" th:field="*{firmnessToMohs}" required min="1" max="10">
+        </div>
+        <div>
+            <label>Плотность</label>
+            <input type="number" th:field="*{density}" required min="1">
+        </div>
+        <div>
+            <label>Цвет</label>
+            <input type="text" th:field="*{color}" required>
+        </div>
+        <div>
+            <label>Тип камня</label>
+            <input type="text" th:field="*{typeOfStone}" required>
+        </div>
+
+            <a th:href="@{list}">Назад</a>
+            <button type="submit">Сохранить</button>
+    </form>
+</body>
+</html>

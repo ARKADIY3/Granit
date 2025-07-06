@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Услуги</title>
+    <link rel="stylesheet" th:href="@{/style.css}" href="/style.css" />
+
+</head>
+<body>
+<header th:replace="~{header :: header}"></header>
+
+<h2>Список услуг</h2>
+<a th:href="@{newService}">Добавить услугу</a>
+<table>
+    <tr>
+        <th>id</th>
+        <th>Название услуги</th>
+        <th>Действие</th>
+    </tr>
+    <tr th:each="service : ${services}">
+        <td th:text="${service.id}"></td>
+        <td th:text="${service.serviceTypeDisplayName}"></td>
+        <td>
+            <a th:href="@{/service/delete/{id}(id=${service.id})}">Удалить</a>
+            <a th:href="@{/service/create/{id}(id=${service.id})}">Редактировать</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

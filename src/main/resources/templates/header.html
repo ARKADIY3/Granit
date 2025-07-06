@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<link rel="stylesheet" th:href="@{/style.css}" href="/style.css" />
+<head>
+  <meta charset="UTF-8">
+  <title>Header</title>
+</head>
+<body>
+<header th:fragment="header">
+  <div>
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li><a th:href="@{/}">Главная</a></li>
+      <li sec:authorize="hasRole('ADMIN')">
+        <a th:href="@{/stone/list}">Камни</a>
+      </li>
+      <li sec:authorize="hasRole('ADMIN')">
+        <a th:href="@{/service/listService}">Услуги</a>
+      </li>
+      <li sec:authorize="hasRole('ADMIN')">
+        <a th:href="@{/order/listOrder}">Заказы</a>
+      </li>
+      <li sec:authorize="hasRole('ADMIN')">
+        <a th:href="@{/user/listUser}">Пользователи</a>
+      </li>
+      <li sec:authorize="!isAuthenticated()">
+        <a th:href="@{/login}">Войти</a>
+      </li>
+      <li sec:authorize="!isAuthenticated()">
+        <a th:href="@{/register}">Регистрация</a>
+      </li>
+      <li>
+        <a th:href="@{/guide}">О программе</a>
+      </li>
+      <li sec:authorize="isAuthenticated()">
+        <a th:href="@{/logout}">Выйти</a>
+      </li>
+    </ul>
+  </div>
+</header>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Пользователи</title>
+  <link rel="stylesheet" th:href="@{/style.css}" href="/style.css" />
+
+</head>
+<body>
+<header th:replace="~{header :: header}"></header>
+
+
+<form class="form" th:action="@{/user/search}" method="get" >
+    <input type="text" name="searchTerm" placeholder="Поиск по ФИО">
+    <button type="submit">Поиск</button>
+    <a th:href="@{/user/listUser}">Сбросить</a>
+</form>
+
+<h2>Список пользователей</h2>
+<table>
+  <tr>
+    <th>id</th>
+    <th>ФИО</th>
+    <th>Email</th>
+    <th>Действие</th>
+  </tr>
+  <tr th:each="user : ${users}">
+    <td th:text="${user.id}"></td>
+    <td th:text="${user.name}"></td>
+    <td th:text="${user.email}"></td>
+    <td>
+      <a th:href="@{/user/delete/{id}(id=${user.id})}">Удалить</a>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

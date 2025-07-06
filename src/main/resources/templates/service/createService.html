@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование</title>
+    <link rel="stylesheet" th:href="@{/style.css}" href="/style.css" />
+
+</head>
+<body>
+<header th:replace="~{header :: header}"></header>
+
+
+<h1>Редактирование</h1>
+<form th:action="@{/service/create/{id}(id=${service.id})}" th:object="${service}" method="post">
+    <div>
+        <label>Название услуги</label>
+        <select th:field="*{serviceType}" required>
+            <option value="">-- Выберите тип услуги --</option>
+            <option th:each="type : ${serviceTypes}"
+                    th:value="${type}"
+                    th:text="${type.displayName}">
+            </option>
+        </select>
+    </div>
+
+    <a th:href="@{listService}">Назад</a>
+    <button type="submit">Сохранить</button>
+</form>
+</body>
+</html>

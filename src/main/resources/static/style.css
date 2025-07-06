@@ -1,0 +1,103 @@
+/* Общие стили для всего приложения */
+body {
+    font-family: Arial, sans-serif;
+    background: #fafafa;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #1976d2;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+form {
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 8px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 6px 8px;
+    margin-bottom: 15px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+}
+
+button, a {
+    padding: 6px 14px;
+    border: none;
+    background: #1976d2;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+button:hover, a:hover {
+    background: #125ea2;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+/* Стили для заголовка и навигационной панели */
+header {
+    background-color: #1976d2; /* Цвет фона заголовка */
+    padding: 10px 0; /* Отступы сверху и снизу */
+}
+
+.navbar-nav {
+    list-style: none; /* Убираем маркеры списка */
+    padding: 0; /* Убираем отступы */
+    margin: 0; /* Убираем маргины */
+    display: flex; /* Используем flexbox для выравнивания */
+    justify-content: center; /* Центрируем элементы */
+}
+
+.navbar-nav li {
+    margin: 0 15px; /* Отступы между элементами */
+}
+
+.navbar-nav a {
+    color: white; /* Цвет текста ссылок */
+    text-decoration: none; /* Убираем подчеркивание */
+    font-weight: bold; /* Жирный шрифт для ссылок */
+    padding: 5px 10px; /* Отступы внутри ссылок */
+    border-radius: 4px; /* Скругленные углы */
+    transition: background-color 0.3s; /* Плавный переход для фона */
+}
+
+.navbar-nav a:hover {
+    background-color: #125ea2; /* Цвет фона при наведении */
+}
+

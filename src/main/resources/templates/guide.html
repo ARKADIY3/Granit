@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Руководство пользователя</title>
+    <link rel="stylesheet" th:href="@{/style.css}" href="/style.css" />
+    <style>
+        .manual-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .section {
+            margin-bottom: 40px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #3498db;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #16a085;
+            margin-top: 20px;
+        }
+        .feature-card {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 0 4px 4px 0;
+        }
+        .step {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+        .step-number {
+            background: #3498db;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .role-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            background: #e74c3c;
+            color: white;
+            border-radius: 3px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        .admin { background: #e74c3c; }
+        .user { background: #2ecc71; }
+        .guest { background: #f39c12; }
+    </style>
+</head>
+<body>
+<header th:replace="~{header :: header}"></header>
+
+<div class="manual-container">
+    <h1>Руководство пользователя</h1>
+
+    <div class="section">
+        <h2>1. Вход в систему</h2>
+
+        <div class="feature-card">
+            <h3>Регистрация нового пользователя <span class="role-badge guest">Гость</span></h3>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>Нажмите кнопку "Регистрация" в верхнем меню</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>Заполните все обязательные поля формы (имя, email, пароль)</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>Нажмите кнопку "Зарегистрироваться"</div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div>После успешной регистрации вы будете автоматически перенаправлены на страницу входа</div>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <h3>Авторизация <span class="role-badge guest">Гость</span></h3>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>Нажмите кнопку "Войти" в верхнем меню</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>Введите ваш email и пароль</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>Нажмите кнопку "Войти"</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>2. Работа с заказами</h2>
+
+        <div class="feature-card">
+            <h3>Создание нового заказа <span class="role-badge admin">Админ</span></h3>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>В главном меню выберите "Заказы" → "Добавить заказ"</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>Заполните данные о клиенте (ФИО)</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>Выберите камень из списка доступных</div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div>Выберите услугу из списка доступных</div>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <div>Укажите вес камня и стоимость заказа</div>
+            </div>
+            <div class="step">
+                <div class="step-number">6</div>
+                <div>Нажмите кнопку "Сохранить"</div>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <h3>Редактирование заказа <span class="role-badge admin">Админ</span></h3>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>В списке заказов нажмите "Редактировать" у нужного заказа</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>Внесите необходимые изменения в данные заказа</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>Нажмите кнопку "Сохранить" для применения изменений</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>3. Управление камнями</h2>
+
+        <div class="feature-card">
+            <h3>Добавление нового камня <span class="role-badge admin">Админ</span></h3>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>В главном меню выберите "Камни" → "Добавить камень"</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>Выберите название камня из выпадающего списка</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>Укажите технические характеристики (твердость по Моосу, плотность)</div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div>Заполните цвет и тип камня</div>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <div>Нажмите кнопку "Сохранить"</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>4. Управление услугами</h2>
+
+        <div class="feature-card">
+            <h3>Добавление услуги <span class="role-badge admin">Админ</span></h3>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>В главном меню выберите "Услуги" → "Добавить услугу"</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>Выберите тип услуги из выпадающего списка</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>Нажмите кнопку "Сохранить"</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>5. Управление пользователями</h2>
+
+        <div class="feature-card">
+            <h3>Поиск пользователей <span class="role-badge admin">Админ</span></h3>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>В главном меню выберите "Пользователи"</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>Введите ФИО пользователя в поле поиска</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>Нажмите кнопку "Поиск"</div>
+            </div>
+        </div>
+
+        <div class="feature-card">
+            <h3>Удаление пользователя <span class="role-badge admin">Админ</span></h3>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>В списке пользователей найдите нужного пользователя</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>Нажмите кнопку "Удалить" напротив выбранного пользователя</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>Подтвердите удаление</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

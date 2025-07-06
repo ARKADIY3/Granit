@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Заказы</title>
+    <link rel="stylesheet" th:href="@{/style.css}" href="/style.css" />
+</head>
+<body>
+<header th:replace="~{header :: header}"></header>
+
+<h2>Список заказов</h2>
+<a th:href="@{newOrder}">Добавить заказ</a>
+<table>
+    <tr>
+        <th>id</th>
+        <th>Клиент</th>
+        <th>Камень</th>
+        <th>Услуга</th>
+        <th>Вес камня</th>
+        <th>Стоимость заказа</th>
+        <th>Дата заказа</th>
+        <th>Действие</th>
+    </tr>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.id}"></td>
+        <td th:text="${order.client}"></td>
+        <td th:text="${order.stone.name}"></td>
+        <td th:text="${order.service.name}"></td>
+        <td th:text="${order.weight}"></td>
+        <td th:text="${order.totalPrice}"></td>
+        <td th:text="${#dates.format(order.orderCreationDate, 'dd.MM.yyyy')}"></td>
+        <td>
+            <a th:href="@{/order/delete/{id}(id=${order.id})}">Удалить</a>
+            <a th:href="@{/order/create/{id}(id=${order.id})}">Редактировать</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

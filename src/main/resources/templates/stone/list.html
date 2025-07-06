@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список</title>
+    <link rel="stylesheet" th:href="@{/style.css}" href="/style.css" />
+
+</head>
+<body>
+<header th:replace="~{header :: header}"></header>
+
+
+    <h2>Список камней</h2>
+    <a th:href="@{new}">Добавить камень</a>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Название камня</th>
+            <th>Твёрдость по Моосу</th>
+            <th>Плотность</th>
+            <th>Цвет</th>
+            <th>Тип камня</th>
+            <th>Действие</th>
+        </tr>
+        <tr th:each="stone : ${stones}">
+            <td th:text="${stone.id}"></td>
+            <td th:text="${stone.name}"></td>
+            <td th:text="${stone.firmnessToMohs}"></td>
+            <td th:text="${stone.density}"></td>
+            <td th:text="${stone.color}"></td>
+            <td th:text="${stone.typeOfStone}"></td>
+            <td>
+                <a th:href="@{/stone/delete/{id}(id=${stone.id})}">Удалить</a>
+                <a th:href="@{/stone/create/{id}(id=${stone.id})}">Редактировать</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

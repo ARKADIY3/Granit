@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить заказ</title>
+    <link rel="stylesheet" th:href="@{/style.css}" href="/style.css" />
+</head>
+<body>
+
+<header th:replace="~{header :: header}"></header>
+
+<h1>Добавить заказ</h1>
+<form th:action="@{/order/saveOrder}" th:object="${order}" method="post">
+    <div>
+        <label>Клиент ФИО</label>
+        <input type="text" th:field="*{client}" required>
+    </div>
+    <div>
+        <label>Камень</label>
+        <select th:field="*{stone}" required>
+            <option value="">-- Выберите камень --</option>
+            <option th:each="stone : ${allStones}"
+                    th:value="${stone?.id}"
+                    th:text="${stone?.name}"
+                    th:if="${stone != null}">
+            </option>
+        </select>
+    </div>
+
+    <div>
+        <label>Услуги</label>
+        <select th:field="*{service}" required>
+            <option value="">-- Выберите тип услуги --</option>
+            <option th:each="service : ${allServices}"
+                    th:value="${service.id}"
+                    th:text="${service.name}"
+                    th:if="${service != null}">
+            </option>
+        </select>
+    </div>
+
+    <div>
+        <label>Вес камня</label>
+        <input type="number" th:field="*{weight}" required>
+    </div>
+    <div>
+        <label>Стоимость заказа</label>
+        <input type="number" th:field="*{totalPrice}" required min="1">
+    </div>
+    <div>
+        <label>Дата заказа</label>
+        <input type="date" th:field="*{orderCreationDate}" required>
+    </div>
+    <a th:href="@{listOrder}">Назад</a>
+    <button type="submit">Сохранить</button>
+</form>
+</body>
+</html>
